@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.adc</groupId>
+	<artifactId>web</artifactId>
+	<packaging>pom</packaging>
+	<version>1.0</version>
+	<modules>
+		<module>common</module>
+		<module>backend</module>
+	</modules>
+
+	<properties>
+		<!-- Setting -->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<java.version>1.7</java.version>
+
+		<!-- Spring Framework -->
+		<spring-framework.version>4.2.2.RELEASE</spring-framework.version>
+
+		<!-- Spring data -->
+		<spring-data-core.version>1.4.1.RELEASE</spring-data-core.version>
+		<spring-data-jpa.version>1.9.0.RELEASE</spring-data-jpa.version>
+		<hibernate.version>5.0.3.Final</hibernate.version>
+		<persistence.version>1.0.2</persistence.version>
+		<querydsl.version>3.7.2</querydsl.version>
+
+		<!-- DB / Pool -->
+		<hikaricp.version>2.4.1</hikaricp.version>
+		<h2.version>1.4.190</h2.version>
+
+		<!-- Aspectj -->
+		<aspectj.version>1.7.4</aspectj.version>
+
+		<!-- CGLib -->
+		<cglib.version>2.2.2</cglib.version>
+
+		<!-- Commons / Guava -->
+		<commons-configuration.version>1.10</commons-configuration.version>
+		<commons-codec.version>1.10</commons-codec.version>
+		<guava.version>18.0</guava.version>
+		<jsr305.version>1.3.9</jsr305.version>
+
+		<!-- Lombok : annotation 기반의 java 유틸 -->
+		<lombok.version>1.16.6</lombok.version>
+
+		<!-- Bean validation -->
+		<validation-api.version>1.1.0.Final</validation-api.version>
+		<hibernate-validator.version>5.2.2.Final</hibernate-validator.version>
+
+		<!-- Jackson Mapper -->
+		<jackson.version>2.6.3</jackson.version>
+
+		<!-- Logging -->
+		<logback.version>1.1.3</logback.version>
+		<slf4j.version>1.7.12</slf4j.version>
+		<log4jdbc.version>0.2.7</log4jdbc.version>
+
+		<!-- Test -->
+		<junit.version>4.11</junit.version>
+
+		<!-- Web -->
+		<jsp.version>2.2</jsp.version>
+		<servlet.version>3.1.0</servlet.version>
+
+		<!-- Layout template -->
+		<sitemesh.version>3.0.1</sitemesh.version>
+
+	</properties>
+
+	<dependencyManagement>
+
+	</dependencyManagement>
+</project>
