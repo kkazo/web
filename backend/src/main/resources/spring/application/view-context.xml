@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- View Setting -->
+	<bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+		<property name="order" value="1"/>
+		<property name="contentNegotiationManager" ref="contentNegotiationManager"/>
+		<property name="defaultViews">
+			<list>
+				<bean class="org.springframework.web.servlet.view.json.MappingJackson2JsonView">
+					<property name="objectMapper" ref="jacksonObjectMapper" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="contentNegotiationManager" class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
+		<property name="favorParameter" value="true"/>
+		<property name="mediaTypes">
+			<map>
+				<!-- entry key="xml" value="application/xml" /-->
+				<entry key="ajax" value="text/html"/>
+				<entry key="json" value="application/json"/>
+				<entry key="jsonp" value="text/javascript"/>
+			</map>
+		</property>
+		<property name="ignoreAcceptHeader" value="true"/>
+	</bean>
+
+	<!-- JSP View -->
+	<!--<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">-->
+		<!--<property name="prefix" value="/WEB-INF/views/"/>-->
+		<!--<property name="suffix" value=".jsp"/>-->
+	<!--</bean>-->
+
+	<!-- Thymeleaf View Resolver - implementation of Spring's ViewResolver interface -->
+	<bean id="viewResolver" class="org.thymeleaf.spring4.view.ThymeleafViewResolver">
+		<property name="templateEngine" ref="templateEngine" />
+		<property name="characterEncoding" value="UTF-8" />
+	</bean>
+
+	<!-- Thymeleaf Template Engine (Spring4-specific version) -->
+	<bean id="templateEngine" class="org.thymeleaf.spring4.SpringTemplateEngine">
+		<property name="templateResolvers">
+			<set>
+				<ref bean="templateResolver" />
+			</set>
+		</property>
+	</bean>
+
+	<!-- Thymeleaf Template Resolver -->
+	<bean id="templateResolver" class="org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver">
+		<property name="prefix" value="/WEB-INF/views/" />
+		<property name="suffix" value=".jsp" />
+		<property name="templateMode" value="HTML5" />
+	</bean>
+</beans>

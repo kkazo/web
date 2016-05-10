@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+	<!--
+	<aop:aspectj-autoproxy proxy-target-class="true"/>
+	-->
+	
+	
+	
+	<!--
+	<aop:config>
+		<aop:aspect id="methodLogAspectAdvisor" ref="methodLogAspect">
+			<aop:pointcut id="methodLogAspectPointcut" expression="execution(* com.sample..*.*(..))"  />
+			<aop:around method="logging" pointcut-ref="methodLogAspectPointcut"/>
+			<aop:after-throwing method="afterThrowing" throwing="ex" pointcut-ref="methodLogAspectPointcut"/>
+		</aop:aspect>
+	</aop:config>
+
+
+	<bean id="methodLogAspect" class="com.sample.admin.common.aspect.MethodLogAop" />
+	-->
+
+	<!-- aop:aspectj-autoproxy  /-->
+
+	<!-- MybatisKey Annotation Support Advice -->
+
+
+	<!-- MybatisKey Pointcut 설정 -->
+	<!--
+	<bean id="mybatisKeyAdvice" class="com.sample.common.aspectj.MybatisKeyAdvisor" />
+	<aop:config proxy-target-class="true">
+		<aop:aspect id="mybatisKeyAspect" ref="mybatisKeyAdvice">
+			<aop:pointcut id="mybatisKeyPointcut" expression="execution(* com.sample..*Vo.*(..))" />
+			<aop:around pointcut-ref="mybatisKeyPointcut" method="setKey" />
+		</aop:aspect>
+	</aop:config>
+	-->
+
+	<!--
+	<bean id="mybatisKeyAdvice" class="com.sample.admin.common.aspect.MybatisKeyAspect" />
+	-->
+
+	<!--
+	<aop:config>
+		<aop:advisor pointcut="execution(* com.sample.common.service.*.*(..))" advice-ref="txAdvice" />
+	</aop:config>
+	-->
+
+</beans>

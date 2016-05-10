@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<value>classpath*:config/*.properties</value>
+		</property>
+		<property name="order" value="1"/>
+	</bean>
+
+	<bean id="configService" class="org.apache.commons.configuration.PropertiesConfiguration">
+		<constructor-arg type="java.lang.String" value="config/common.properties" />
+		<property name="reloadingStrategy" ref="reloadingStrategy" />
+	</bean>
+
+	<bean id="reloadingStrategy" class="org.apache.commons.configuration.reloading.FileChangedReloadingStrategy">
+		<property name="refreshDelay" value="5000" />
+	</bean>
+
+	<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property name="basenames" >
+			<list>
+				<value>classpath:message/error</value>
+				<value>classpath:message/message</value>
+			</list>
+		</property>
+		<property name="cacheSeconds" value="60" />
+	</bean>
+
+	<bean id="messageSourceAccessor" class="org.springframework.context.support.MessageSourceAccessor">
+		<constructor-arg ref="messageSource"/>
+	</bean>
+</beans>
