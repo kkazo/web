@@ -16,8 +16,18 @@
 			<param-value>true</param-value>
 		</init-param>
 	</filter>
+
 	<filter-mapping>
 		<filter-name>encodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<filter>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>springSecurityFilterChain</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 
@@ -31,6 +41,7 @@
 			classpath*:spring/application/database-context.xml
 			classpath*:spring/application/aop-context.xml
 			classpath*:spring/application/aop/*-context.xml
+			classpath*:spring/application/security-context.xml
 		</param-value>
 	</context-param>
 

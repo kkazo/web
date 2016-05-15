@@ -31,7 +31,7 @@ public class SampleController extends BaseController {
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String getAll(Model model, Sample sample) throws Exception {
-		model.addAttribute(sampleService.getAll(sample));
+		model.addAttribute("result", sampleService.getAll(sample));
 		return "sample/index";
 	}
 

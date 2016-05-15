@@ -48,6 +48,12 @@
 				<ref bean="templateResolver" />
 			</set>
 		</property>
+		<property name="additionalDialects">
+			<set>
+				<bean class="org.thymeleaf.extras.springsecurity4.dialect.SpringSecurityDialect" />
+				<!--<bean class="nz.net.ultraq.thymeleaf.LayoutDialect"/>-->
+			</set>
+		</property>
 	</bean>
 
 	<!-- Thymeleaf Template Resolver -->

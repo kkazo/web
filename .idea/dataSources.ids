@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="H2 - web" uuid="9c40abaa-36d0-4d3f-9991-f419838ff9db">
+    <database-info product="H2" version="1.4.190 (2015-10-11)" jdbc-version="4.0" driver-name="H2 JDBC Driver" driver-version="1.4.190 (2015-10-11)">
+      <identifier-quote-string>&quot;</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="upper" quoted-identifiers="exact"/>
+    <schema name="PUBLIC" catalog="SAMPLE"/>
+    <table name="SAMPLE" schema="PUBLIC" catalog="SAMPLE" type="TABLE" remarks="7IOY7ZSM">
+      <column name="SAMPLE_ID" sqlType="VARCHAR" precision="32" scale="0" nullable="false" jdbcType="12"/>
+      <column name="SUBJECT" sqlType="VARCHAR" precision="200" scale="0" nullable="false" jdbcType="12"/>
+      <column name="DESC" sqlType="VARCHAR" precision="4000" scale="0" nullable="false" jdbcType="12"/>
+      <column name="IMG_GROUP_ID" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <column name="START_DATE" sqlType="DATE" precision="8" scale="0" nullable="false" jdbcType="91"/>
+      <column name="END_DATE" sqlType="DATE" precision="8" scale="0" nullable="false" jdbcType="91"/>
+      <column name="REG_ID" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="REG_DATE" sqlType="DATE" precision="8" scale="0" nullable="false" jdbcType="91" def="Q1VSUkVOVF9EQVRFKCk="/>
+      <column name="MOD_ID" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+      <column name="MOD_DATE" sqlType="DATE" precision="8" scale="0" nullable="true" jdbcType="91"/>
+      <column name="USE_YN" sqlType="CHAR" precision="1" scale="0" nullable="false" jdbcType="1" def="J1kn"/>
+      <column name="DEL_YN" sqlType="CHAR" precision="1" scale="0" nullable="false" jdbcType="1" def="J04n"/>
+      <primary-key name="PK_SAMPLE" columns="SAMPLE_ID"/>
+    </table>
+  </data-source>
+</component>

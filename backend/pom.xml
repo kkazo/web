@@ -15,7 +15,9 @@
 
 
 	<properties>
+		<!--<thymeleaf.version>3.0.0.RELEASE</thymeleaf.version>-->
 		<thymeleaf.version>3.0.0.RELEASE</thymeleaf.version>
+		<thymeleaf-layout-dialect.version>1.4.0</thymeleaf-layout-dialect.version>
 	</properties>
 
 	<dependencies>
@@ -35,6 +37,18 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-jdbc</artifactId>
+		</dependency>
+
+		<!-- Spring Security -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>${spring-security.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+			<version>${spring-security.version}</version>
 		</dependency>
 
 		<!-- Spring data -->
@@ -168,14 +182,19 @@
 			<groupId>org.thymeleaf</groupId>
 			<artifactId>thymeleaf-spring4</artifactId>
 			<version>${thymeleaf.version}</version>
-			<scope>compile</scope>
 		</dependency>
-
+		<dependency>
+			<groupId>org.thymeleaf.extras</groupId>
+			<artifactId>thymeleaf-extras-springsecurity4</artifactId>
+			<version>${thymeleaf.version}</version>
+		</dependency>
+		<!-- 3.0 지원버전 아직 안올라옴...
 		<dependency>
 			<groupId>nz.net.ultraq.thymeleaf</groupId>
 			<artifactId>thymeleaf-layout-dialect</artifactId>
-			<version>1.4.0</version>
+			<version>${thymeleaf-layout-dialect.version}</version>
 		</dependency>
+		-->
 
 	</dependencies>
 
