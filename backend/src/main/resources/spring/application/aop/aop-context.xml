@@ -21,7 +21,7 @@
 	</aop:config>
 
 
-	<bean id="methodLogAspect" class="com.sample.admin.common.aspect.MethodLogAop" />
+	<bean id="methodLogAspect" class="com.sample.admin.core.aspect.MethodLogAop" />
 	-->
 
 	<!-- aop:aspectj-autoproxy  /-->
@@ -31,7 +31,7 @@
 
 	<!-- MybatisKey Pointcut 설정 -->
 	<!--
-	<bean id="mybatisKeyAdvice" class="com.sample.common.aspectj.MybatisKeyAdvisor" />
+	<bean id="mybatisKeyAdvice" class="com.sample.core.aspectj.MybatisKeyAdvisor" />
 	<aop:config proxy-target-class="true">
 		<aop:aspect id="mybatisKeyAspect" ref="mybatisKeyAdvice">
 			<aop:pointcut id="mybatisKeyPointcut" expression="execution(* com.sample..*Vo.*(..))" />
@@ -41,12 +41,12 @@
 	-->
 
 	<!--
-	<bean id="mybatisKeyAdvice" class="com.sample.admin.common.aspect.MybatisKeyAspect" />
+	<bean id="mybatisKeyAdvice" class="com.sample.admin.core.aspect.MybatisKeyAspect" />
 	-->
 
 	<!--
 	<aop:config>
-		<aop:advisor pointcut="execution(* com.sample.common.service.*.*(..))" advice-ref="txAdvice" />
+		<aop:advisor pointcut="execution(* com.sample.core.service.*.*(..))" advice-ref="txAdvice" />
 	</aop:config>
 	-->
 

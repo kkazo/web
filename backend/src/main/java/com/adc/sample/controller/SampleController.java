@@ -1,18 +1,12 @@
 package com.adc.sample.controller;
 
-import com.adc.common.controller.BaseController;
+import com.adc.core.controller.BaseController;
 import com.adc.sample.domain.Sample;
 import com.adc.sample.service.SampleService;
-import org.apache.commons.lang.builder.ToStringBuilder;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import javax.validation.Valid;
 
 /**
  * 샘플 Controller

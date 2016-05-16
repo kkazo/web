@@ -6,6 +6,23 @@
     </database-info>
     <case-sensitivity plain-identifiers="upper" quoted-identifiers="exact"/>
     <schema name="PUBLIC" catalog="SAMPLE"/>
+    <table name="CM_TREE" schema="PUBLIC" catalog="SAMPLE" type="TABLE">
+      <column name="UUID" sqlType="UUID" precision="2147483647" scale="0" nullable="false" jdbcType="-2" def="KE5FWFQgVkFMVUUgRk9SIFBVQkxJQy5TWVNURU1fU0VRVUVOQ0VfMjcyOENBQUJfN0YxRl80RDU5XzhGNThfNDBGMDg2RDU3RDY4KQ==" autoIncrement="true"/>
+      <column name="ID" sqlType="VARCHAR" precision="2147483647" scale="0" nullable="false" jdbcType="12"/>
+      <column name="NAME" sqlType="VARCHAR" precision="200" scale="0" nullable="false" jdbcType="12"/>
+      <column name="CODE" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="VALUE1" sqlType="VARCHAR" precision="500" scale="0" nullable="true" jdbcType="12"/>
+      <column name="VALUE2" sqlType="VARCHAR" precision="500" scale="0" nullable="true" jdbcType="12"/>
+      <column name="VALUE3" sqlType="VARCHAR" precision="500" scale="0" nullable="true" jdbcType="12"/>
+      <column name="VALUE4" sqlType="VARCHAR" precision="500" scale="0" nullable="true" jdbcType="12"/>
+      <column name="VALUE5" sqlType="VARCHAR" precision="500" scale="0" nullable="true" jdbcType="12"/>
+      <column name="USE_YN" sqlType="CHAR" precision="1" scale="0" nullable="false" jdbcType="1" def="J1kn"/>
+      <column name="DEL_YN" sqlType="CHAR" precision="1" scale="0" nullable="false" jdbcType="1"/>
+      <column name="REG_ID" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="REG_DATE" sqlType="TIMESTAMP" precision="23" scale="10" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVAoKQ=="/>
+      <primary-key name="CONSTRAINT_6" columns="UUID"/>
+      <index name="UNQ_ID_INDEX_6" unique="true" columns="ID"/>
+    </table>
     <table name="SAMPLE" schema="PUBLIC" catalog="SAMPLE" type="TABLE" remarks="7IOY7ZSM">
       <column name="SAMPLE_ID" sqlType="VARCHAR" precision="32" scale="0" nullable="false" jdbcType="12"/>
       <column name="SUBJECT" sqlType="VARCHAR" precision="200" scale="0" nullable="false" jdbcType="12"/>

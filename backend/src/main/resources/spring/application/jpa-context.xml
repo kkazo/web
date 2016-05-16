@@ -23,7 +23,7 @@
 				<prop key="hibernate.connection.shutdown">true</prop>
 				<prop key="hibernate.show_sql">true</prop>
 				<!--<prop key="hibernate.implicit_naming_strategy">org.hibernate.cfg.ImprovedNamingStrategy</prop>-->
-				<prop key="hibernate.physical_naming_strategy">com.adc.common.util.ImprovedNamingStrategy</prop>
+				<prop key="hibernate.physical_naming_strategy">com.adc.core.util.ImprovedNamingStrategy</prop>
 				<!--<prop key="hibernate.physical_naming_strategy">org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyHbmImpl</prop>-->
 			</props>
 		</property>

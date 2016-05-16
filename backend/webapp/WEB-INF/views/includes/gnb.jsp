@@ -1,3 +1,7 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head/>
+<body>
 <nav class="navbar-default navbar-static-side" role="navigation" th:fragment="gnb">
 	<div class="sidebar-collapse">
 		<ul class="nav metismenu" id="side-menu">
@@ -29,3 +33,5 @@
 		</ul>
 	</div>
 </nav>
+</body>
+</html>

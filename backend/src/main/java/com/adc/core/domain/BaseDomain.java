@@ -1,4 +1,4 @@
-package com.adc.common.domain;
+package com.adc.core.domain;
 
 import lombok.Data;
 import org.springframework.data.domain.Pageable;

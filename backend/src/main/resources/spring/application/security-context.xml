@@ -11,7 +11,8 @@
 		<intercept-url pattern="/home" access="permitAll" />
 		<intercept-url pattern="/sample/**" access="hasRole('ADMIN')" />
 		<intercept-url pattern="/dba**" access="hasRole('ADMIN') and hasRole('DBA')" />
-		<form-login  authentication-failure-url="/Access_Denied" />
+		<form-login authentication-failure-url="/Access_Denied" login-page="/login" />
+		<logout logout-url="/logout" />
 
 		<access-denied-handler ref="adcAccessDeniedHandlerr" />
 

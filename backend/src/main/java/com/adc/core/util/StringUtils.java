@@ -1,6 +1,4 @@
-package com.adc.common.util;
-
-import com.google.common.base.Strings;
+package com.adc.core.util;
 
 /**
  * TODO: 코멘트 생성

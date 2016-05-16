@@ -8,7 +8,7 @@
 		@see mvc-context.xml : message-converters
 		@see view-context.xml : MappingJackson2JsonView
 	-->
-	<bean id="jacksonObjectMapper" class="com.adc.common.mapper.BaseObjectMapper" />
+	<bean id="jacksonObjectMapper" class="com.adc.core.mapper.BaseObjectMapper" />
 
 	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
 		<property name="messageConverters">

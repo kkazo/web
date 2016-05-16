@@ -1,6 +1,6 @@
 package com.adc.sample.domain;
 
-import com.adc.common.domain.BaseDomain;
+import com.adc.core.domain.BaseDomain;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;

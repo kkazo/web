@@ -10,7 +10,7 @@
 	<aop:aspectj-autoproxy />
 	<!--
 	<aop:config proxy-target-class="true">
-		<aop:advisor pointcut="execution(* com.sample.common.service.*.*(..))" advice-ref="txAdvice" />
+		<aop:advisor pointcut="execution(* com.sample.core.service.*.*(..))" advice-ref="txAdvice" />
 	</aop:config>
 
 	<tx:advice id="txAdvice" transaction-manager="transactionManager">

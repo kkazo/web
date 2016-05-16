@@ -1,4 +1,4 @@
-package com.adc.common.mapper;
+package com.adc.core.mapper;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
