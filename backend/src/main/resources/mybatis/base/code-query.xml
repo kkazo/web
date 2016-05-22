@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="code">
+	<sql id="defaultWhere">
+		<where>
+			AND CC.DEL_YN = 'N'
+		</where>
+	</sql>
+
+	<sql id="defaultField">
+		PARN_CD
+		, CD
+		, NM
+		, VAL
+		, DECODE(CONNECT_BY_ISLEAF, 0, 1, 0) AS HAS_CHILD
+		, DECODE(PARN_CD, '#', 1, 0) AS OPENED
+		, USE_YN
+	</sql>
+
+	<sql id="defaultFrom">
+		FROM CM_CD CC
+	</sql>
+
+	<sql id="defaultOrder">
+		START WITH CC.PARN_CD = '#'
+        CONNECT BY PRIOR CC.CD = CC.PARN_CD
+        ORDER SIBLINGS BY CC.ORD
+	</sql>
+
+	<select id="count" parameterType="codeVo" resultType="long">
+		SELECT COUNT(CC.CD)
+		<include refid="defaultFrom"/>
+		<include refid="defaultWhere"/>
+		<include refid="defaultOrder"/>
+	</select>
+
+	<select id="findByList" parameterType="codeVo" resultType="codeTreeVo">
+		SELECT
+		<include refid="defaultField"/>
+		<include refid="defaultFrom"/>
+		<include refid="defaultWhere"/>
+		<include refid="defaultOrder"/>
+	</select>
+
+	<select id="findByChildList" parameterType="codeVo" resultType="codeVo">
+		SELECT
+		<include refid="defaultField"/>
+		<include refid="defaultFrom"/>
+		<include refid="defaultWhere"/>
+		AND CC.PARN_CD = #{cd}
+		<include refid="defaultOrder"/>
+	</select>
+
+	<select id="find" parameterType="java.lang.String" resultType="codeVo">
+		SELECT
+		<include refid="defaultField"/>
+		<include refid="defaultFrom"/>
+		<include refid="defaultWhere"/>
+		AND CC.CD = #{pk}
+		<include refid="defaultOrder"/>
+	</select>
+
+	<update id="save" parameterType="codeVo">
+		MERGE INTO CM_CD
+		USING DUAL ON (CD = #{cd})
+		WHEN MATCHED THEN
+			UPDATE SET
+				PARN_CD = #{parnCd}
+				, NM = #{nm}
+				, VAL = #{val}
+		WHEN NOT MATCHED THEN
+			INSERT (
+				PARN_CD
+				, CD
+				, NM
+				, VAL
+			) VALUES (
+				#{parnCd}
+				, #{cd}
+				, #{nm}
+				, #{val}
+			)
+	</update>
+</mapper>

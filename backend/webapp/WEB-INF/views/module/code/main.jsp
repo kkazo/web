@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<html lang="ko" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="includes/header :: common_header(~{::title},~{::link},~{::script})">
 	<title>Sample 인덱스</title>
-	<link href="/static/css/plugins/jsTree/style.min.css" rel="stylesheet">
+	<link href="/static/js/plugins/jsTree/style.min.css" rel="stylesheet">
 	<script src="/static/js/plugins/jsTree/jstree.min.js"></script>
 	<script type="text/javascript" charset="UTF-8">
 		$(document).ready(function () {
@@ -90,7 +90,27 @@
 						'Scripts',
 						'Templates',
 					]
+					,"check_callback" : true
 				}
+				, "plugins" : [
+					"contextmenu", "dnd", "search",
+					"state", "types"
+				],
+				contextmenu: {items: {
+					renameItem: { // The "rename" menu item
+						label: "하위추가",
+						action: function () {
+							alert("TODO");
+						}
+					},
+					deleteItem: { // The "delete" menu item
+						label: "Delete",
+						'icon': 'fa fa-folder',
+						action: function () {
+							alert("delete");
+						}
+					}
+				}}
 			});
 		});
 
@@ -103,10 +123,22 @@
 		<div th:substituteby="includes/util :: util"/>
 		<div class="wrapper wrapper-content animated fadeInRight">
 			<div class="row">
-				<div class="col-lg-6">
+				<div class="col-lg-5">
 					<div class="ibox float-e-margins">
 						<div class="ibox-title">
 							<h5>Basic example
+								<small>with custom Font Awesome icons.</small>
+							</h5>
+						</div>
+						<div class="ibox-content">
+							<div id="divCodes"></div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-7 animated fadeInRight">
+					<div class="ibox float-e-margins">
+						<div class="ibox-title">
+							<h5>코드 정보 입력
 								<small>with custom Font Awesome icons.</small>
 							</h5>
 							<div class="ibox-tools">
@@ -119,12 +151,13 @@
 							</div>
 						</div>
 						<div class="ibox-content">
-							<div id="divCodes"></div>
+
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+
 		<div th:substituteby="includes/footer :: footer"/>
 	</div>
 </div>

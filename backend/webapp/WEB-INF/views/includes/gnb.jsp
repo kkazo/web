@@ -7,22 +7,30 @@
 		<ul class="nav metismenu" id="side-menu">
 			<li class="nav-header">
 				<div class="dropdown profile-element">
-					<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-						<span class="clear">
+					<a data-toggle="dropdown" class="dropdown-toggle" href="#"
+					   th:switch="${#authentication}? ${#authorization.expression('isAuthenticated()')} : ${false}">
+						<span th:case="${true}" class="clear">
 							<span class="block m-t-xs">
 								<strong class="font-bold" sec:authentication="name">Kwangyo Cho</strong>
 							</span>
-							<span class="text-muted text-xs block" sec:authentication="principal.authorities">Art Director <b
-								class="caret"></b></span>
+							<span class="text-muted text-xs block" sec:authentication="principal.authorities">
+								Art Director<b class="caret"></b>
+							</span>
+						</span>
+						<span th:unless="${false}" class="clear">
+							<span class="block m-t-xs">
+								<strong class="font-bold">Guest</strong>
+							</span>
+							<span class="text-muted text-xs block">
+								Guest<b class="caret"></b>
+							</span>
 						</span>
 					</a>
 					<ul class="dropdown-menu animated fadeInRight m-t-xs">
 						<li><a href="#">Logout</a></li>
 					</ul>
 				</div>
-				<div class="logo-element">
-					ADC
-				</div>
+				<div class="logo-element">ADC</div>
 			</li>
 			<li class="active">
 				<a href="index.html"><i class="fa fa-th-large"></i> <span class="nav-label">Main view</span></a>

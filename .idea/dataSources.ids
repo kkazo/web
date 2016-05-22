@@ -6,6 +6,28 @@
     </database-info>
     <case-sensitivity plain-identifiers="upper" quoted-identifiers="exact"/>
     <schema name="PUBLIC" catalog="SAMPLE"/>
+    <table name="CM_CODE" schema="PUBLIC" catalog="SAMPLE" type="TABLE">
+      <column name="ID" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="NAME" sqlType="VARCHAR" precision="200" scale="0" nullable="false" jdbcType="12"/>
+      <column name="CODE" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="VALUE" sqlType="VARCHAR" precision="500" scale="0" nullable="true" jdbcType="12"/>
+      <column name="DESC" sqlType="VARCHAR" precision="1000" scale="0" nullable="true" jdbcType="12"/>
+      <column name="VALUE1" sqlType="VARCHAR" precision="500" scale="0" nullable="true" jdbcType="12"/>
+      <column name="VALUE2" sqlType="VARCHAR" precision="500" scale="0" nullable="true" jdbcType="12"/>
+      <column name="VALUE3" sqlType="VARCHAR" precision="500" scale="0" nullable="true" jdbcType="12"/>
+      <column name="VALUE4" sqlType="VARCHAR" precision="500" scale="0" nullable="true" jdbcType="12"/>
+      <column name="VALUE5" sqlType="VARCHAR" precision="500" scale="0" nullable="true" jdbcType="12"/>
+      <column name="FOLDER_YN" sqlType="CHAR" precision="1" scale="0" nullable="false" jdbcType="1" def="J04n"/>
+      <column name="USE_YN" sqlType="CHAR" precision="1" scale="0" nullable="false" jdbcType="1" def="J1kn"/>
+      <column name="DEL_YN" sqlType="CHAR" precision="1" scale="0" nullable="false" jdbcType="1" def="J04n"/>
+      <column name="REG_ID" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="REG_DATE" sqlType="DATE" precision="8" scale="0" nullable="false" jdbcType="91" def="Q1VSUkVOVF9EQVRFKCk="/>
+      <column name="MOD_ID" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+      <column name="MOD_DATE" sqlType="DATE" precision="8" scale="0" nullable="true" jdbcType="91"/>
+      <column name="ORD" sqlType="INTEGER" precision="10" scale="0" nullable="false" jdbcType="4" def="MQ=="/>
+      <column name="PARENT_ID" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="CONSTRAINT_61" columns="ID"/>
+    </table>
     <table name="CM_TREE" schema="PUBLIC" catalog="SAMPLE" type="TABLE">
       <column name="UUID" sqlType="UUID" precision="2147483647" scale="0" nullable="false" jdbcType="-2" def="KE5FWFQgVkFMVUUgRk9SIFBVQkxJQy5TWVNURU1fU0VRVUVOQ0VfMjcyOENBQUJfN0YxRl80RDU5XzhGNThfNDBGMDg2RDU3RDY4KQ==" autoIncrement="true"/>
       <column name="ID" sqlType="VARCHAR" precision="2147483647" scale="0" nullable="false" jdbcType="12"/>

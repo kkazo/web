@@ -24,7 +24,7 @@
 		<property name="logFormatter">
 			<bean class="net.sf.log4jdbc.tools.Log4JdbcCustomFormatter">
 				<property name="loggingType" value="MULTI_LINE" />
-				<property name="sqlPrefix" value="SQL         :  "/>
+				<property name="sqlPrefix" value="\\n"/>
 			</bean>
 		</property>
 	</bean>
@@ -35,6 +35,18 @@
 
 	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
 		<property name="dataSource"  ref="dataSource" />
+	</bean>
+
+	<!-- Mybatis Session Factory -->
+	<bean id="sqlSessionFactory" class="com.adc.mybatis.factory.RefreshableSqlSessionFactoryBean">
+		<property name="configLocation" value="classpath:mybatis/config/h2-config.xml" />
+		<property name="mapperLocations">
+			<list>
+				<!--<value>classpath:mybatis/h2/common/**/*-query.xml</value>-->
+				<value>classpath:mybatis/h2/sample/**/*-query.xml</value>
+			</list>
+		</property>
+		<property name="dataSource" ref="dataSource" />
 	</bean>
 
 	<tx:annotation-driven/>

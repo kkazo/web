@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="code">
+	<sql id="defaultWhere">
+		<where>
+			AND CC.DEL_YN = 'N'
+		</where>
+	</sql>
+
+	<sql id="defaultOrder">
+		<![CDATA[
+		ORDER BY CC.ORD
+		]]>
+	</sql>
+
+	<select id="count" parameterType="com.adc.module.code.domain.Code" resultType="long">
+		SELECT COUNT(CC.ID)
+		<include refid="defaultWhere"/>
+	</select>
+
+	<select id="findByList" parameterType="com.adc.module.code.domain.Code" resultType="com.adc.module.code.domain.Code">
+		SELECT
+			ID
+			, NAME
+			, CODE
+			, VALUE1
+			, VALUE2
+			, VALUE3
+			, VALUE4
+			, VALUE5
+			, FOLDER_YN
+			, USE_YN
+		FROM CM_CODE CC
+		<include refid="defaultWhere"/>
+		<if test="id != null and id != ''">
+			AND ID =#{id}
+		</if>
+		<include refid="defaultOrder"/>
+	</select>
+
+	<select id="find" parameterType="java.lang.String" resultType="com.adc.module.code.domain.Code">
+		SELECT
+			ID
+			, NAME
+			, CODE
+			, VALUE1
+			, VALUE2
+			, VALUE3
+			, VALUE4
+			, VALUE5
+			, FOLDER_YN
+			, USE_YN
+		FROM CM_CODE CC
+		<include refid="defaultWhere"/>
+		AND CC.ID = #{id}
+		<include refid="defaultOrder"/>
+	</select>
+
+	<insert id="save" parameterType="com.adc.module.code.domain.Code">
+		INSERT INTO CM_CODE (
+				ID
+				, PARENT_ID
+				, NAME
+				, CODE
+				, VALUE
+				, DESC
+				, FOLDER_YN
+				, REG_ID
+		) VALUES (
+				#{id}
+				, #{parentId}
+				, #{name}
+				, #{code}
+				, #{value}
+				, #{desc}
+				, #{folderYn}
+				, #{regId}
+		)
+	</insert>
+</mapper>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="common">
+	<sql id="pagingHeader">
+		SELECT PAGING_A.* FROM (
+			SELECT PAGING_B.*, ROWNUM RNUM FROM (
+	</sql>
+	<sql id="pagingFooter">
+		<![CDATA[
+			) PAGING_B
+			WHERE ROWNUM <= #{pageSize} * #{page}
+		) PAGING_A
+		WHERE RNUM >= (#{page} - 1) * #{pageSize} + 1
+		]]>
+	</sql>
+</mapper>

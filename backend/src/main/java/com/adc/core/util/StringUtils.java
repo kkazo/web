@@ -6,6 +6,6 @@ package com.adc.core.util;
  * @version 1.0
  * Created by ChoKwangyo on 2015-11-15.
  */
-public class StringUtils  {
+public class StringUtils extends org.apache.commons.lang.StringUtils {
 
 }

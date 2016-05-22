@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="template.basic">
+	<sql id="defaultWhere">
+			AND CB.DEL_YN = 'N'
+	</sql>
+
+	<sql id="findByListWhere">
+		<if test="subject != null and subject != ''">
+		AND SUBJECT LIKE '%' || #{subject} || '%'
+		</if>
+		<if test="content != null and content != ''">
+		AND CONTENT LIKE '%' || #{content} || '%'
+		</if>
+		<if test="regId != null and regId != ''">
+		AND REG_ID LIKE '%' || #{regId} || '%'
+		</if>
+	</sql>
+	<sql id="defaultField">
+		CB.SEQ
+		, CB.BRD_ID
+		, CB.SUBJECT
+		, CB.HIT
+		, REG_DATE
+		, CB.REG_ID
+		, CB.MOD_DATE
+		, CB.MOD_ID
+		, CB.USE_YN
+	</sql>
+
+	<sql id="viewField">
+		CB.SEQ
+		, CB.BRD_ID
+		, CB.SUBJECT
+		, CB.CONTENT
+		, CB.HIT
+		, CB.REG_DATE
+		, CB.REG_ID
+		, CB.MOD_DATE
+		, CB.MOD_ID
+		, CB.USE_YN
+	</sql>
+
+	<sql id="defaultFrom">
+		FROM CM_BRD CB
+	</sql>
+
+	<sql id="defaultOrder">
+		<if test="sort == null">
+			ORDER BY CB.SEQ DESC
+		</if>
+		<if test="sort != null">
+		<foreach item="item" index="index" collection="sort" open="ORDER BY" separator="," close="">
+		${item.property} ${item.direction}
+		</foreach>
+		</if>
+	</sql>
+
+	<select id="count" parameterType="basicVo" resultType="long">
+		SELECT COUNT(CB.SEQ)
+		<include refid="defaultFrom"/>
+		<where>
+			<include refid="defaultWhere"/>
+			<include refid="findByListWhere"/>
+		</where>
+	</select>
+
+	<select id="findByList" parameterType="basicVo" resultType="basicVo">
+		SELECT
+			<include refid="defaultField"/>
+		<include refid="defaultFrom"/>
+		<where>
+			<include refid="defaultWhere"/>
+			<include refid="findByListWhere"/>
+		</where>
+		<include refid="defaultOrder"/>
+	</select>
+
+	<select id="find" parameterType="objectKey" resultType="basicVo">
+		SELECT * FROM (
+			SELECT
+				<include refid="viewField"/>
+				, (
+					SELECT SEQ FROM CM_BRD PREV1
+					<where>
+						<include refid="defaultWhere"/>
+						AND PREV1.SEQ &lt; CB.SEQ
+					</where>
+					ORDER BY SEQ DESC LIMIT 1
+				) PREV_KEY
+				, (
+					SELECT SUBJECT FROM CM_BRD PREV2
+					<where>
+						<include refid="defaultWhere"/>
+						AND PREV2.SEQ &lt; CB.SEQ
+					</where>
+					ORDER BY SEQ DESC LIMIT 1
+				) PREV_SUBJECT
+				, (
+					SELECT SEQ FROM CM_BRD NEXT1
+					<where>
+						<include refid="defaultWhere"/>
+						AND NEXT1.SEQ &gt; CB.SEQ
+					</where>
+					ORDER BY SEQ ASC LIMIT 1
+				) NEXT_KEY
+				, (
+					SELECT SUBJECT FROM CM_BRD NEXT2
+					<where>
+						<include refid="defaultWhere"/>
+						AND NEXT2.SEQ &gt; CB.SEQ
+					</where>
+					ORDER BY SEQ ASC LIMIT 1
+				) NEXT_SUBJECT
+			<include refid="defaultFrom"/>
+			<where>
+				<include refid="defaultWhere"/>
+			</where>
+		) CB
+		<where>
+			AND CB.SEQ = #{keys.seq}
+		</where>
+	</select>
+
+	<insert id="save" parameterType="basicVo">
+		INSERT INTO CM_BRD (
+			SEQ
+			, BRD_ID
+			, SUBJECT
+			, CONTENT
+			, REG_ID
+		) VALUES (
+			#{seq}
+			, #{brdId}
+			, #{subject}
+			, #{content}
+			, 'admin'
+		)
+	</insert>
+
+	<update id="update" parameterType="basicVo">
+		UPDATE CM_BRD SET
+				BRD_ID = #{brdId}
+				, SUBJECT = #{subject}
+				, CONTENT = #{content}
+				, MOD_DATE = CURRENT_TIMESTAMP
+				, MOD_ID = #{modId}
+		WHERE SEQ = ${seq}
+	</update>
+
+	<update id="updateHit" parameterType="basicVo">
+		UPDATE CM_BRD SET
+			HIT = HIT + 1
+		WHERE SEQ = ${seq}
+	</update>
+
+	<delete id="delete" parameterType="basicVo">
+		UPDATE CM_BRD SET DEL_YN = 'Y' WHERE SEQ = #{seq}
+	</delete>
+</mapper>

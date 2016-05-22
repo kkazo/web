@@ -146,6 +146,16 @@
 			<artifactId>log4jdbc-remix</artifactId>
 		</dependency>
 
+		<!-- Mybatis -->
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis-spring</artifactId>
+		</dependency>
+
 		<!-- Test -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -195,6 +205,12 @@
 			<version>${thymeleaf-layout-dialect.version}</version>
 		</dependency>
 		-->
+
+		<!-- Lucy XSS Servlet Filter -->
+		<dependency>
+			<groupId>com.navercorp.lucy</groupId>
+			<artifactId>lucy-xss-servlet</artifactId>
+		</dependency>
 
 	</dependencies>
 
