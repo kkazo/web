@@ -70,7 +70,7 @@
 		<servlet.version>3.0.1</servlet.version>
 
 		<!-- Local Settings DB / Pool -->
-		<hikaricp.version>2.4.1</hikaricp.version>
+		<hikaricp.version>2.4.6</hikaricp.version>
 		<h2.version>1.4.190</h2.version>
 
 		<!-- Lucy XSS Filter -->

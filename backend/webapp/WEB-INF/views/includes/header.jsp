@@ -12,6 +12,8 @@
 	<link href="/static/css/bootstrap.min.css" rel="stylesheet" />
 	<link href="/static/css/animate.css" rel="stylesheet" />
 	<link href="/static/css/style.css" rel="stylesheet" />
+	<link href="/static/css/awesome-bootstrap-checkbox.css" rel="stylesheet" />
+	<link href="/static/plugins/sweetalter/sweetalert.css" rel="stylesheet" />
 
 	<th:block th:replace="${links} ?: ~{}" />
 
@@ -24,6 +26,12 @@
 	<!-- Custom and plugin javascript -->
 	<script type="text/javascript" src="/static/js/inspinia.js"></script>
 	<script type="text/javascript" src="/static/js/plugins/pace/pace.min.js"></script>
+	<script type="text/javascript" src="/static/js/plugins/lodash.4.13.1.js"></script>
+
+	<script type="text/javascript" src="/static/js/plugins/validate/jquery.validate.js"></script>
+	<script type="text/javascript" src="/static/js/plugins/validate/localization/messages_ko.js"></script>
+
+	<script type="text/javascript" src="/static/plugins/sweetalter/sweetalert.min.js"></script>
 
 	<th:block th:replace="${script} ?: ~{}" />
 </head>

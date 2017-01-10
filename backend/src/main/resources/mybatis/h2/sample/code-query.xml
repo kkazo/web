@@ -21,36 +21,42 @@
 
 	<select id="findByList" parameterType="com.adc.module.code.domain.Code" resultType="com.adc.module.code.domain.Code">
 		SELECT
-			ID
-			, NAME
-			, CODE
-			, VALUE1
-			, VALUE2
-			, VALUE3
-			, VALUE4
-			, VALUE5
-			, FOLDER_YN
-			, USE_YN
+		ID
+		, NAME
+		, CODE
+		, VALUE1
+		, VALUE2
+		, VALUE3
+		, VALUE4
+		, VALUE5
+		, FOLDER_YN
+		, USE_YN
 		FROM CM_CODE CC
 		<include refid="defaultWhere"/>
-		<if test="id != null and id != ''">
-			AND ID =#{id}
-		</if>
+		<choose>
+			<when test="parentId != null and parentId != ''">
+				AND PARENT_ID =#{parentId}
+			</when>
+			<otherwise>
+				AND PARENT_ID = 'CODE'
+			</otherwise>
+		</choose>
 		<include refid="defaultOrder"/>
 	</select>
 
 	<select id="find" parameterType="java.lang.String" resultType="com.adc.module.code.domain.Code">
 		SELECT
-			ID
-			, NAME
-			, CODE
-			, VALUE1
-			, VALUE2
-			, VALUE3
-			, VALUE4
-			, VALUE5
-			, FOLDER_YN
-			, USE_YN
+		PARENT_ID
+		, ID
+		, NAME
+		, CODE
+		, VALUE1
+		, VALUE2
+		, VALUE3
+		, VALUE4
+		, VALUE5
+		, FOLDER_YN
+		, USE_YN
 		FROM CM_CODE CC
 		<include refid="defaultWhere"/>
 		AND CC.ID = #{id}
@@ -59,23 +65,56 @@
 
 	<insert id="save" parameterType="com.adc.module.code.domain.Code">
 		INSERT INTO CM_CODE (
-				ID
-				, PARENT_ID
-				, NAME
-				, CODE
-				, VALUE
-				, DESC
-				, FOLDER_YN
-				, REG_ID
+		ID
+		, PARENT_ID
+		, NAME
+		, CODE
+		, VALUE
+		, DESC
+		, FOLDER_YN
+		, REG_ID
 		) VALUES (
-				#{id}
-				, #{parentId}
-				, #{name}
-				, #{code}
-				, #{value}
-				, #{desc}
-				, #{folderYn}
-				, #{regId}
+		#{id}
+		, #{parentId}
+		, #{name}
+		, #{code}
+		, #{value}
+		, #{desc}
+		, #{folderYn}
+		, #{regId}
 		)
 	</insert>
+
+	<update id="update" parameterType="com.adc.module.code.domain.Code">
+		UPDATE CM_CODE SET
+			CODE = #{code}
+			, NAME = #{name}
+			, VALUE1 = #{value1}
+			, VALUE2 = #{value2}
+			, VALUE3 = #{value3}
+			, VALUE4 = #{value4}
+			, VALUE5 = #{value5}
+			, FOLDER_YN = #{folderYn}
+			, USE_YN = #{useYn}
+		WHERE ID = #{id}
+	</update>
+
+	<update id="updateMove" parameterType="com.adc.module.code.domain.Code">
+		UPDATE CM_CODE SET ORD = #{position} WHERE ID = #{id};
+	</update>
+	<update id="updateMoveUp" parameterType="com.adc.module.code.domain.Code">
+		<![CDATA[
+		UPDATE CM_CODE SET ORD = ORD + 1 WHERE PARENT_ID = #{parentId} AND ORD >= #{position} AND ORD < #{oldPosition}
+		]]>
+	</update>
+
+	<update id="updateMoveDown" parameterType="com.adc.module.code.domain.Code">
+		<![CDATA[
+		UPDATE CM_CODE SET ORD = ORD - 1 WHERE PARENT_ID = #{parentId} AND ORD <= #{position} AND ORD > #{oldPosition}
+		]]>
+	</update>
+
+	<update id="updateMoveGroup" parameterType="com.adc.module.code.domain.Code">
+		UPDATE CM_CODE SET PARENT_ID = #{parentId} WHERE CC.ID = #{id}
+	</update>
 </mapper>

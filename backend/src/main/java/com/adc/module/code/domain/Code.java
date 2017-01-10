@@ -26,7 +26,6 @@ import java.util.Calendar;
 @Table(name="SAMPLE")
 public class Code extends BaseDomain {
 
-
 	@Id
 	private String id;	// 샘플 아이디
 	private String parentId;
@@ -37,5 +36,9 @@ public class Code extends BaseDomain {
 	private String value3;
 	private String value4;
 	private String value5;
-	private int ord;
+	private Integer ord;
+	private String folderYn;
+	private Integer position;
+	private Integer oldPosition;
+
 }

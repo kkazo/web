@@ -15,9 +15,8 @@
 
 
 	<properties>
-		<!--<thymeleaf.version>3.0.0.RELEASE</thymeleaf.version>-->
 		<thymeleaf.version>3.0.0.RELEASE</thymeleaf.version>
-		<thymeleaf-layout-dialect.version>1.4.0</thymeleaf-layout-dialect.version>
+		<thymeleaf-layout-dialect.version>2.0.0</thymeleaf-layout-dialect.version>
 	</properties>
 
 	<dependencies>
@@ -198,13 +197,11 @@
 			<artifactId>thymeleaf-extras-springsecurity4</artifactId>
 			<version>${thymeleaf.version}</version>
 		</dependency>
-		<!-- 3.0 지원버전 아직 안올라옴...
 		<dependency>
 			<groupId>nz.net.ultraq.thymeleaf</groupId>
 			<artifactId>thymeleaf-layout-dialect</artifactId>
 			<version>${thymeleaf-layout-dialect.version}</version>
 		</dependency>
-		-->
 
 		<!-- Lucy XSS Servlet Filter -->
 		<dependency>

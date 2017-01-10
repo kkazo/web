@@ -23,26 +23,49 @@ public interface AdcCrudRepository<T, ID extends Serializable> {
 	final String SUFFIX_DELETE = ".delete";
 
 
-	List<T> findAll(String queryId);
-	List<T> findAll(String queryId, List<ID> ids);
-	Page<T> findAll(String queryId, Pageable pageable);
+	List<T> findAll(String namespace);
+	List<T> findAll(String namespace, List<ID> ids);
+	Page<T> findAll(String namespace, Pageable pageable);
 
-	T findOne(String queryId, ID id);
-	T findOne(String queryId, T domain);
+	T findOne(String namespace, ID id);
+	T findOne(String namespace, T domain);
 
-	boolean contains(String queryId, ID id);
+	boolean contains(String namespace, ID id);
 
-	long count(String queryId, Pageable pageable);
+	long count(String namespace, Pageable pageable);
 
- 	int insert(String queryId, T entity);
-	int insert(String queryId, List<T> entities);
+ 	int insert(String namespace, T entity);
+	int insert(String namespace, List<T> entities);
 
-	int update(String queryId, T entity);
-	int update(String queryId, List<T> entities);
+	int update(String namespace, T entity);
+	int update(String namespace, List<T> entities);
 
-	int delete(String queryId, ID id);
-	int delete(String queryId, T entity);
-	int delete(String queryId, List<? extends T> entities);
+	int delete(String namespace, ID id);
+	int delete(String namespace, T entity);
+	int delete(String namespace, List<? extends T> entities);
 
-	int deleteAll(String queryId);
+	int deleteAll(String namespace);
+
+	List<T> findAll(String namespace, String name);
+	List<T> findAll(String namespace, String name, List<ID> ids);
+	Page<T> findAll(String namespace, String name, Pageable pageable);
+
+	T findOne(String namespace, String name, ID id);
+	T findOne(String namespace, String name, T domain);
+
+	boolean contains(String namespace, String name, ID id);
+
+	long count(String namespace, String name, Pageable pageable);
+
+	int insert(String namespace, String name, T entity);
+	int insert(String namespace, String name, List<T> entities);
+
+	int update(String namespace, String name, T entity);
+	int update(String namespace, String name, List<T> entities);
+
+	int delete(String namespace, String name, ID id);
+	int delete(String namespace, String name, T entity);
+	int delete(String namespace, String name, List<? extends T> entities);
+
+	int deleteAll(String namespace, String name);
 }
